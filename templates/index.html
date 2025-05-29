@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Depression Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f8f8f8; }
+        form { background: #fff; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; }
+        .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Check Your Depression Risk</h2>
+    <form method="POST">
+        <label>Gender:</label>
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <label>Age (17-25):</label>
+        <input type="number" name="age" min="17" max="25" required>
+
+        <label>CGPA (0-4):</label>
+        <input type="number" step="0.01" name="cgpa" min="0" max="4" required>
+
+        <label>Sleep Duration (hours):</label>
+        <input type="number" step="0.1" name="sleep_duration" required>
+
+        <label>Academic Pressure (1-10):</label>
+        <input type="number" name="academic_pressure" min="1" max="10" required>
+
+        <label>Work Pressure (1-10):</label>
+        <input type="number" name="work_pressure" min="1" max="10" required>
+
+        <label>Financial Stress (1-10):</label>
+        <input type="number" name="financial_stress" min="1" max="10" required>
+
+        <label>Family History of Mental Illness?</label>
+        <select name="family_history">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Financial Problem:</label>
+        <select name="financial_problem">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Health Issue:</label>
+        <select name="health_issue">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Social Support:</label>
+        <select name="social_support">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Diet:</label>
+        <select name="diet">
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+        </select>
+
+        <label>Lost Interest:</label>
+        <select name="lost_interest">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Have you ever had suicidal thoughts?</label>
+        <select name="suicidal_thoughts">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        Estimated Depression Risk: {{ prediction }}%
+    </div>
+    {% endif %}
+</body>
+</html>
